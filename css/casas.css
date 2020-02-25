@@ -369,6 +369,7 @@ main {
 }
 .grid {
 	width: 95%;
+	grid-template-rows: repeat(3,60px);
 }
 .grid div {
 	border-width: 2px
@@ -377,10 +378,16 @@ main {
 	width: 20px;
 	height: 20px;
 }
-
 .grid h2{
 	font-size: 100%;
-}	
+}
+.yellow-badge{
+	font-size: 80%;
+	padding: 10px;
+	right: 10px;
+	bottom: 0%;
+}
+
 }
 
 @media (max-width: 660px) {
@@ -450,12 +457,6 @@ main{
 header::before {
 	left: 38%;
 }
-.yellow-badge{
-	font-size: 80%;
-	padding: 10px;
-	right: 10px;
-	bottom: 20%;
-}
 .slider-wrap {
 	width: 98%;
 }
@@ -476,10 +477,9 @@ header::before {
 	font-size: 80%;
 }
 .yellow-badge{
-	padding: 3px;
 	border-width: 1px;
-	bottom:25%;
-	right: 10px;
+	padding: 3px;
+	bottom:12%;
 }
 }
 
