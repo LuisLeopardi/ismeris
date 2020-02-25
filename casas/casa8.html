@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Casa en venta</title>
+	<meta charset="UTF-8">
+  	<meta name="description" content="Casas en venta en Maturin, estado Monagas">
+  	<meta name="author" content="Luis Leopardi">
+	<link rel="stylesheet" type="text/css" href="../css/casas.css">
+	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+	<header>
+		<div class="title">
+			<a class="volver" href="../index.html"> &#x2190; volver </a>
+		</div>
+		<div class="ismeris">
+			<h2 class="nombre"> Ismeris Ramos </h2> <h2 class="vendedora"> 
+				<span>//</span>  vendedora inmobiliaria </h2>
+		</div>
+	</header>
+
+	<main>
+		<div id="carrusel" class="normal">
+			<img src="../css/img/iconos/close.svg" id="close">
+			<button id="next">&#xbb;</button>
+			<button id="prev">&#xab;</button>
+			<p id="ver"> ver tamaño completo </p>
+			<div class="slider-wrap">
+				<div id="slider">
+					<img src="../css/img/70.jpg" class='image-x'>
+					<img src="../css/img/71.jpg" class='image-x'>
+					<img src="../css/img/72.jpg" class='image-x'>
+					<img src="../css/img/73.jpg" class='image-x'>
+					<img src="../css/img/74.jpg" class='image-x'>
+					<img src="../css/img/75.jpg" class='image-y'>
+					<img src="../css/img/76.jpg" class='image-x'>
+					<img src="../css/img/77.jpg" class='image-x'>
+					<img src="../css/img/78.jpg" class='image-x'>
+					<img src="../css/img/79.jpg" class='image-x'>
+					<img src="../css/img/80.jpg" class='image-x'>
+					<img src="../css/img/81.jpg" class='image-x'>
+					<img src="../css/img/82.jpg" class='image-x'>
+				</div>
+			</div>
+			<div id="dot-wrap"></div>
+		</div>
+
+		<div id="comprar">
+			<div> 
+				<img class="icon" src="../css/img/iconos/whatsapp.svg"> 0424-9320415 
+			</div> 
+			<div> 
+				<img class="icon" src="../css/img/iconos/mail.svg"> ismerisramos@gmail.com 
+			</div>
+		</div>
+
+		<div class="grid">
+			<div>
+				<img src="../css/img/iconos/bed.svg">
+				<h2>Habitaciones:</h2> <p class="yellow-badge"> 3 </p> 
+			</div>
+			<div>
+				<img src="../css/img/iconos/shower.svg">
+				<h2>Baños:</h2> <p class="yellow-badge"> 4 </p>
+			</div>
+			<div>
+				<img src="../css/img/iconos/car.svg">
+				<h2>Garaje:</h2> <p class="yellow-badge moreRight"> No </p>
+			</div>
+			<div>
+				<img src="../css/img/iconos/tree.svg">
+				<h2>Jardin:</h2> <p class="yellow-badge moreRight"> No </p>
+			</div>
+			<div>
+				<img src="../css/img/iconos/info.svg">
+				<p>informacion adicional: se vende casa en Lomas del Bosque, totalmente amoblado, 3 habitaciones, 4 baños, cocina empotrada y porche </p>
+			</div>			
+		</div>
+	</main>
+
+	</div>
+
+	<script type="text/javascript">
+		function sliderISM () {
+			var next = document.getElementById('next');
+			var prev = document.getElementById('prev');
+			var slider = document.getElementById('slider');
+			var seeMore = document.getElementById('ver');
+			var carrusel = document.getElementById('carrusel');
+			var close = document.getElementById('close');
+			var dotWrap = document.getElementById('dot-wrap');
+			var children = slider.children.length;
+			var counter = 0;
+
+			function addChildren () {
+				function createCircle(){
+					var dot = document.createElement('div');
+					dot.classList.add("dot");
+					dotWrap.appendChild(dot);
+				}
+
+				for (var i=0; i<children; i++) {
+					createCircle()
+				}
+
+			}
+
+			addChildren ();
+			var dots = document.getElementsByClassName('dot');
+			dots[0].classList.add('active');
+
+			next.addEventListener('click',function(){
+				if (counter < children * 100 - 100) {
+					counter+=100;
+					slider.style.transform = 'translateX(-'+counter+'%)';
+					dots[ counter / 100 ].classList.add("active");
+					dots[ counter / 100 - 1 ].classList.remove("active");
+				} else {
+					dots[0].classList.add('active');
+					dots[children - 1].classList.remove("active");
+					counter = 0
+					slider.style.transform = 'translateX(-'+counter+'%)';
+				}
+
+			});
+
+			prev.addEventListener('click',function(){
+				if (counter > 0) {
+					counter-=100;
+					slider.style.transform = 'translateX(-'+counter+'%)';
+					dots[ counter / 100 ].classList.add("active");
+					dots[ counter / 100 + 1 ].classList.remove("active");
+				} else if (counter === 0) {
+					counter = children * 100 - 100;
+					slider.style.transform = 'translateX(-'+counter+'%)';
+					dots[0].classList.remove('active');
+					dots[children-1].classList.add('active');
+				} else {
+					return;
+				}
+			})
+
+			ver.addEventListener('click', function(){
+				carrusel.classList.add('full');
+				next.classList.add('button-bottom');
+				prev.classList.add('button-bottom');
+				carrusel.classList.remove('normal');
+				close.style.display = 'block';
+			})
+
+			close.addEventListener('click', function(){
+				carrusel.classList.remove('full');
+				next.classList.remove('button-bottom');
+				prev.classList.remove('button-bottom');
+				carrusel.classList.add('normal');
+				close.style.display = 'none';
+			})
+		}
+
+	sliderISM ()
+	</script>
+
+</body>
+</html>
